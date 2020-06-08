@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+ <div class="container">
+    <h1 class="text-center">Liste des Patients</h1>
+    <br>
+
+    <table class='table table-striped'>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for patient in patients %}
+            <tr>
+                <td><a href="{{ path('patient_show', { 'id': patient.id }) }}">{{ patient.id }}</a></td>
+                <td>{{ patient.nom }}</td>
+                <td>{{ patient.prenom }}</td>
+                <td>{% if patient.datee %}{{ patient.datee|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ patient.heure }}</td>
+                <td>
+                    <ul>
+                        
+                            <a class="btn btn-outline-primary" href="{{ path('patient_show', { 'id': patient.id }) }}">show</a>
+                        
+                            <a class="btn btn-outline-success" href="{{ path('patient_edit', { 'id': patient.id }) }}">edit</a>
+
+                            <a class="btn btn-outline-danger" href="{{ path('patient_delete', { 'id': patient.id }) }}">Delete</a>
+                    
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+      
+            <a class="btn btn-lg btn-primary" href="{{ path('patient_new') }}">Create a new patient</a>
+        
+    </ul>
+{% endblock %}

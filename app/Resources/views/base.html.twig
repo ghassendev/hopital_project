@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+        <meta charset="UTF-8" />
+        <title>{% block title %}Hopital{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Hopital</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item {% if menu is defined and menu=='home' %} active {% endif %}">
+                        <a class="nav-link" href=" /">Home </a>
+                    </li>
+                     <li class="nav-item {% if menu is defined and menu=='patient' %} active {% endif %}">
+                        <a class="nav-link" href={{path('patient_index')}}>Patient</a>
+                    </li>
+                         <li class="nav-item {% if menu is defined and menu=='consulterpatient' %} active {% endif %}">
+                        <a class="nav-link" href={{path('patient_cons')}}>admin Patient</a>
+                    </li>
+                        <li class="nav-item {% if menu is defined and menu=='addpatient' %} active {% endif %}">
+                        <a class="nav-link" href={{path('patient_new')}}>Ajouter Patient</a>
+                    </li>
+                    <li class="nav-item {% if menu is defined and menu=='medecin' %} active {% endif %}">
+                        <a class="nav-link" href={{path('medecin_index')}}>Medecin</a>
+                    </li>
+                    </li>
+                        <li class="nav-item {% if menu is defined and menu=='addmedecin' %} active {% endif %}">
+                        <a class="nav-link" href={{path('medecin_new')}}>Ajouter Medecin</a>
+                    </li>
+
+ 
+
+            </div>
+        </nav>
+
+        
+        
+        
+        
+         {% block  body %}
+        {% endblock %}
+        
+        {% block javascripts %}{% endblock %}
+       
+
+    </body>
+    
+</html>

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center">Medecins List</h1>
+<br>
+
+
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Code</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medecin in medecins %}
+            <tr>
+                <td><a href="{{ path('medecin_show', { 'id': medecin.id }) }}">{{ medecin.id }}</a></td>
+                <td>{{ medecin.libelle }}</td>
+                <td>{{ medecin.code }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a class="btn btn-outline-primary" href="{{ path('medecin_show', { 'id': medecin.id }) }}">show</a>
+                        
+                            <a class="btn btn-outline-success" href="{{ path('medecin_edit', { 'id': medecin.id }) }}">edit</a>
+
+                            <a class="btn btn-outline-danger" href="{{ path('medecin_delete', { 'id': medecin.id }) }}">Delete</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="container">
+        
+            <a class="btn btn-primary btn-lg" href="{{ path('medecin_new') }}">Create a new medecin</a>
+       
+    </ul>
+{% endblock %}

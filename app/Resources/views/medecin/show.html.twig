@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class='container'>
+    <h1>Medecin</h1>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ medecin.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ medecin.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ medecin.code }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a class="btn btn-primary btn-lg" href="{{ path('medecin_index') }}">Back to the list</a>
+        </li>
+        <br>
+        <li>
+            <a class="btn btn-success" href="{{ path('medecin_edit', { 'id': medecin.id }) }}">Edit</a>
+        </li>
+        <br>
+        <li>
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

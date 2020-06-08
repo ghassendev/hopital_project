@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+
+<div class='m-3'>
+ <div class="d-flex justify-content-center ">
+    <h1>Liste des patients</h1><br>
+    </div>
+
+    <hr>
+         <div class="d-flex justify-content-center ">
+        {{form_start(form )  }}
+        {{form_widget(form)  }}
+        
+       
+        <input type="submit" value="Rechercher" class="btn btn-outline-success ml-5 ">
+        </div>
+        {{form_end(form)  }}
+      <div class="row">
+  
+         {% for patient in patients %}
+         <div class="col-sm-6">
+    <div class="card">
+    <div class="card-body">
+    <h4 class="card-title">{{ patient.nom }} {{ patient.prenom }}</h4>
+    <p class="card-text">
+         <ul>
+         <li>Id:{{ patient.id }}</li>
+         <li>Date:{{ patient.datee|date('Y-m-d') }}</li>
+         <li>Heure:{{ patient.heure }}</li>
+         <li>Medecin:{{ patient.Medecin }}</li>
+         
+         
+         
+         </ul>
+            
+        </p>
+            </div>
+    </div>
+    </div>
+    
+    
+        {% endfor %}
+        
+{% endblock %}
