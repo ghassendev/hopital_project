@@ -162,12 +162,6 @@ class PatientController extends Controller
     }
 
 
-
-
-
-
-
-
     /**
      * Creates a form to delete a patient entity.
      *
